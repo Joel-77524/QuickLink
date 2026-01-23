@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code | QuickLink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f7ff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 420px;
+            padding: 35px 30px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 12px;
+            font-size: 1.8rem;
+            color: #212529;
+        }
+
+        .short-url {
+            color: #4361ee;
+            font-weight: 600;
+            margin-bottom: 25px;
+            word-break: break-all;
+        }
+
+        img {
+            width: 220px;
+            height: 220px;
+            margin-bottom: 25px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4361ee;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>QR Code</h2>
+
+    <div class="short-url">
+        {{ short_url }}
+    </div>
+
+    <img src="/qr/{{ short_code }}" alt="QR Code">
+
+    <div>
+        <a href="/analytics">← Back to Analytics</a>
+    </div>
+</div>
+
+</body>
+</html>

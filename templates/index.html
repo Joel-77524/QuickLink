@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QuickLink | URL Shortener</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: #f5f7ff;
+            color: #212529;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #4361ee;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #212529;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #4361ee;
+        }
+
+        /* Hero */
+        .hero {
+            background: white;
+            padding: 70px 20px;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #6c757d;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* Form */
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .form-box {
+            background: white;
+            padding: 35px;
+            margin-top: 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            margin-bottom: 18px;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4361ee;
+        }
+
+        button {
+            background: #4361ee;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            width: 100%;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3f37c9;
+        }
+
+        .result {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 25px;
+            text-align: center;
+            word-break: break-all;
+        }
+
+        footer {
+            margin-top: 80px;
+            background: #212529;
+            color: #adb5bd;
+            padding: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-link"></i> QuickLink
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/analytics">Analytics</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Shorten Your Links</h1>
+    <p>Create custom, password-protected, expiring short URLs with real analytics.</p>
+</section>
+
+<!-- FORM -->
+<div class="container">
+    <div class="form-box">
+        <form method="POST">
+
+            <label>Long URL</label>
+            <input type="url" name="long_url"
+                   placeholder="https://example.com" required>
+
+            <label>Custom Alias (optional)</label>
+            <input type="text" name="custom_alias"
+                   placeholder="my-link">
+
+            <label>Password (optional)</label>
+            <input type="password" name="password"
+                   placeholder="Protect your link">
+
+            <label>Expiry Date (optional)</label>
+            <input type="date" name="expires_at">
+
+            <button type="submit">
+                <i class="fas fa-magic"></i> Shorten URL
+            </button>
+
+        </form>
+
+        {% if short_url %}
+        {% if short_url %}
+<div class="result">
+    ✅ Short URL:
+    <br>
+    <a href="{{ short_url }}" target="_blank">
+        {{ short_url }}
+    </a>
+
+    <hr style="margin:20px 0;">
+
+    <h3>QR Code</h3>
+    <img src="/qr/{{ short_url.split('/')[-1] }}"
+         alt="QR Code"
+         style="margin-top:15px; width:180px;">
+</div>
+{% endif %}
+
+        {% endif %}
+
+        {% if error %}
+        <div class="result" style="color:red;">
+            ❌ {{ error }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<footer>
+    © 2026 QuickLink — Flask • MySQL • Analytics
+</footer>
+
+</body>
+</html>
