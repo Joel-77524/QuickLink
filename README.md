@@ -1,4 +1,4 @@
-QuickLink - URL Shortener
+//QuickLink - URL Shortener
 
 QuickLink is a full-stack URL shortening web application built with Flask and MySQL. It allows users to create custom short URLs, generate QR codes, set link expiration dates, protect links with passwords, and track click analytics through a dedicated dashboard.
 
@@ -146,4 +146,4 @@ QuickLink Repository
 
 This project is licensed under the MIT License.
 
-Feel free to use, modify, and distribute this project for educational and personal purposes
+Feel free to use, modify, and distribute this project for educational and personal purposes//
